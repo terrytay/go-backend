@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/terrytay/backend-architecture/entities"
-	"github.com/terrytay/backend-architecture/repositories"
+	"github.com/terrytay/go-backend/entities"
+	"github.com/terrytay/go-backend/repositories"
 )
 
 type IUserService interface {

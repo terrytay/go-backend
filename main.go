@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/joho/godotenv"
-	"github.com/terrytay/backend-architecture/db"
+	"github.com/terrytay/go-backend/db"
 	"log"
 	"os"
 )

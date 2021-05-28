@@ -1,4 +1,4 @@
-module github.com/terrytay/backend-architecture
+module github.com/terrytay/go-backend
 
 go 1.16
 

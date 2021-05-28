@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/terrytay/backend-architecture/db"
-	"github.com/terrytay/backend-architecture/repositories"
-	"github.com/terrytay/backend-architecture/services"
-	"github.com/terrytay/backend-architecture/types"
+	"github.com/terrytay/go-backend/db"
+	"github.com/terrytay/go-backend/repositories"
+	"github.com/terrytay/go-backend/services"
+	"github.com/terrytay/go-backend/types"
 )
 
 type Repositories struct {

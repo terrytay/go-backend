@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"github.com/terrytay/backend-architecture/db"
-	"github.com/terrytay/backend-architecture/entities"
+	"github.com/terrytay/go-backend/db"
+	"github.com/terrytay/go-backend/entities"
 )
 
 type IUserRepository interface {
