@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/joho/godotenv"
 	"github.com/terrytay/go-backend/db"
+	"github.com/terrytay/go-backend/helpers"
 	"log"
-	"os"
 )
 
 func main() {
@@ -14,10 +14,10 @@ func main() {
 	dbClient := &db.Client{}
 	// TODO: Put to process env
 	err := dbClient.Initialise(db.Config{
-		Addr:     getEnvVariable("DB_ADDR"),
-		User:     getEnvVariable("DB_USER"),
-		Password: getEnvVariable("DB_PASS"),
-		Database: getEnvVariable("DB_NAME"),
+		Addr:     helpers.GetEnvVariable("DB_ADDR"),
+		User:     helpers.GetEnvVariable("DB_USER"),
+		Password: helpers.GetEnvVariable("DB_PASS"),
+		Database: helpers.GetEnvVariable("DB_NAME"),
 	})
 
 	if err != nil {
@@ -32,8 +32,4 @@ func loadConfig() {
 	if err != nil {
 		log.Fatal("error loading .env file")
 	}
-}
-
-func getEnvVariable(key string) string {
-	return os.Getenv(key)
 }

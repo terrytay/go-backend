@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
+	"github.com/terrytay/go-backend/controllers"
 	"github.com/terrytay/go-backend/db"
+	"github.com/terrytay/go-backend/helpers"
 	"github.com/terrytay/go-backend/repositories"
 	"github.com/terrytay/go-backend/services"
 	"github.com/terrytay/go-backend/types"
@@ -29,13 +30,25 @@ func getServices(repos *Repositories) *Services {
 	}
 }
 
-func getControllers(services *Services) []types.Controller {
-	return nil
+func getControllers(services *Services) *[]types.Controller {
+	return &[]types.Controller{
+		&controllers.UserController{UserService: services.userService},
+	}
 }
 
 func initApp(dbClient *db.Client) {
 	repos := getRepositories(dbClient)
 	svcs := getServices(repos)
-	//controllers := getControllers(svcs)
-	fmt.Println(svcs)
+	controllers := getControllers(svcs)
+
+	app := Initialize(controllers)
+
+	port := helpers.GetEnvVariable("PORT")
+
+	if port == "" {
+		port = ":3000"
+	}
+
+	app.Start(port)
+
 }

@@ -6,13 +6,19 @@ import (
 )
 
 type IUserService interface {
-	GetUser(username string) *entities.User
+	GetUser(username string) (*entities.User, error)
 }
 
 type UserService struct {
 	Repo repositories.IUserRepository
 }
 
-func (s *UserService) GetUser(username string) *entities.User {
-	return s.Repo.GetUser(username)
+func (s *UserService) GetUser(username string) (*entities.User, error) {
+	user, err := s.Repo.GetUser(username)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return user, nil
 }

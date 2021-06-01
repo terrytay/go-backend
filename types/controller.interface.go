@@ -1,5 +1,7 @@
 package types
 
+import "github.com/gin-gonic/gin"
+
 type Controller interface {
-	initializeRoutes()
+	InitializeRoutes(router *gin.Engine)
 }
