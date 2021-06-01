@@ -27,5 +27,5 @@ func (controller *UserController) get(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"success": false, "message": err.Error()})
 		return
 	}
-	c.JSON(http.StatusNotFound, gin.H{"success": true, "data": user})
+	c.JSON(http.StatusOK, gin.H{"success": true, "data": user})
 }
