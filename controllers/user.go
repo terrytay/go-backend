@@ -6,10 +6,6 @@ import (
 	"net/http"
 )
 
-type IUserController interface {
-	get(c *gin.Context)
-}
-
 type UserController struct {
 	UserService services.IUserService
 }

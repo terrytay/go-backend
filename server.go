@@ -32,6 +32,7 @@ func getServices(repos *Repositories) *Services {
 
 func getControllers(services *Services) *[]types.Controller {
 	return &[]types.Controller{
+		&controllers.HealthController{},
 		&controllers.UserController{UserService: services.userService},
 	}
 }
