@@ -10,6 +10,7 @@ import (
 
 type IClient interface {
 	Initialise() error
+	GetConnection() *pg.DB
 }
 
 type Client struct {
@@ -37,4 +38,8 @@ func (d *Client) Initialise(connectionConfig Config) error {
 	fmt.Println("connection to database established")
 
 	return nil
+}
+
+func (d *Client) GetConnection() *pg.DB {
+	return d.db
 }

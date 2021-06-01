@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+
 	// Load config from environment variables
 	loadConfig()
 

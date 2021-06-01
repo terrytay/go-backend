@@ -22,7 +22,9 @@ func (controller *UserController) InitializeRoutes(router *gin.Engine) {
 }
 
 func (controller *UserController) get(c *gin.Context) {
-	user, err := controller.UserService.GetUser(c.Param("username"))
+	username := c.Param("username")
+
+	user, err := controller.UserService.GetUser(c, username)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"success": false, "message": err.Error()})
 		return

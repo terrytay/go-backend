@@ -1,11 +1,11 @@
 package entities
 
 type User struct {
-	Username string
-	Password string
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
-func (u User) toDTO() *UserDTO {
+func (u User) ToDTO() *UserDTO {
 	return &UserDTO{
 		Username: u.Username,
 		Password: u.Password,
@@ -13,11 +13,13 @@ func (u User) toDTO() *UserDTO {
 }
 
 type UserDTO struct {
+	tableName struct{} `pg:"users"`
+
 	Username string
 	Password string
 }
 
-func (u UserDTO) toEntity() *User {
+func (u UserDTO) ToEntity() *User {
 	return &User{
 		Username: u.Username,
 		Password: u.Password,
