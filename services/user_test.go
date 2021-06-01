@@ -1,10 +1,9 @@
-package test_controllers
+package services
 
 import (
 	"errors"
 	"github.com/gin-gonic/gin"
 	"github.com/terrytay/go-backend/entities"
-	"github.com/terrytay/go-backend/services"
 	"testing"
 )
 
@@ -23,7 +22,7 @@ func (s mockUserRepo) GetUser(c *gin.Context, username string) (*entities.User, 
 }
 
 func TestCannotFindUser(t *testing.T) {
-	userService := services.UserService{Repo: mockUserRepo{}}
+	userService := UserService{Repo: mockUserRepo{}}
 	_, err := userService.GetUser(nil, "test")
 	if err == nil {
 		t.Errorf("invalid user does not throw error")
@@ -31,7 +30,7 @@ func TestCannotFindUser(t *testing.T) {
 }
 
 func TestSuccessUser(t *testing.T) {
-	userService := services.UserService{Repo: mockUserRepo{}}
+	userService := UserService{Repo: mockUserRepo{}}
 	_, err := userService.GetUser(nil, "admin")
 	if err != nil {
 		t.Errorf("does not return valid user")
