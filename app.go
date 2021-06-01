@@ -19,6 +19,10 @@ func Initialize(controllers *[]types.Controller) *App {
 	f, _ := os.Create("gin.log")
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 
+	// Non-debug mode
+	gin.SetMode(gin.ReleaseMode)
+
+
 	// gin app
 	app := App{router: gin.Default()}
 
